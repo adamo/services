@@ -1,7 +1,9 @@
 <?php namespace Depcore\Services;
 
 use Backend;
+use Event;
 use System\Classes\PluginBase;
+use Depcore\Services\Models\Service;
 
 /**
  * services Plugin Information File
@@ -31,7 +33,24 @@ class Plugin extends PluginBase
      */
     public function register()
     {
+        Event::listen('pages.menuitem.listTypes', function () {
+            return [
+                'single-service' => 'depcore.services::lang.service.label' ,
+                'all-services' => 'depcore.services::lang.services.menu_label',
+            ];
+        });
 
+        Event::listen('pages.menuitem.getTypeInfo', function ($type) {
+            if ($type === 'single-service' or $type == 'all-services') {
+                return Service::getMenuTypeInfo($type);
+            }
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function ($type, $item, $url, $theme) {
+            if ($type === 'single-service' or $type == 'all-services') {
+                return Service::resolveMenuItem($item, $url, $theme);
+            }
+        });
     }
 
     /**
@@ -51,10 +70,10 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
 
         return [
-            'Depcore\Services\Components\MyComponent' => 'myComponent',
+            'Depcore\Services\Components\ServiceContent' => 'ServiceContent',
+            'Depcore\Services\Components\ServicesList' => 'ServicesList',
         ];
     }
 
@@ -68,9 +87,9 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'depcore.services.some_permission' => [
+            'depcore.services.create_services' => [
                 'tab' => 'depcore.services::lang.plugin.name',
-                'label' => 'depcore.services::lang.permissions.some_permission'
+                'label' => 'depcore.services::lang.permissions.create_services'
             ],
         ];
     }
@@ -82,13 +101,12 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
 
         return [
             'services' => [
                 'label'       => 'depcore.services::lang.plugin.name',
-                'url'         => Backend::url('depcore/services/mycontroller'),
-                'icon'        => 'icon-leaf',
+                'url'         => Backend::url('depcore/services/services'),
+                'icon'        => 'icon-cubes',
                 'permissions' => ['depcore.services.*'],
                 'order'       => 500,
             ],

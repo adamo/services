@@ -6,7 +6,7 @@
 {% endif %}
 >
 	<div class="hero-content">
-		<h1>Projektowanie <br>stron www<span class="accent">.</span></h1>
+		<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
    		{{ item.content|raw }}
 	</div>
 </div>

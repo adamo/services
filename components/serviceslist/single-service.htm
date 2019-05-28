@@ -3,7 +3,7 @@
         <figure><img src="{{ service.icon.getPath() }}" alt="{{service.icon.title}}"></figure>
         <h4><a href="{{ __SELF__.property('url') }}/{{ service.slug }}">{{ service.name }}<span class="accent">.</span></a></h4>
         {{ service.short_description|raw }}
-        <span class="price">od <strong>{{ service.price_from }}</strong>PLN</span>
+        <span class="price">{{"od"|_}} <strong>{{ service.price_from }}</strong>{{'PLN'|_}}</span>
     </section>
-    <a href="{{ __SELF__.property('url') }}/{{ service.slug }}" class="button" style="visibility: visible;">dowiedz się więcej</a>
+    <a href="{{ __SELF__.property('url') }}/{{ service.slug }}" class="button" style="visibility: visible;">{{'dowiedz się więcej'|_}}</a>
 </div>
