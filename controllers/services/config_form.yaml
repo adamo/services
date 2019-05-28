@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: depcore.services::lang.service.label
+
+# Model Form Field configuration
+form: $/depcore/services/models/service/fields.yaml
+
+# Model Class name
+modelClass: Depcore\Services\Models\Service
+
+# Default redirect location
+defaultRedirect: depcore/services/services
+
+# Create page
+create:
+    title: depcore.services::lang.service.create_title
+    redirect: depcore/services/services/update/:id
+    redirectClose: depcore/services/services
+
+# Update page
+update:
+    title: depcore.services::lang.service.update_title
+    redirect: depcore/services/services
+    redirectClose: depcore/services/services
+
+# Preview page
+preview:
+    title: depcore.services::lang.service.preview_title

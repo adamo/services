@@ -1,0 +1,12 @@
+<style>
+
+</style>
+<div class="hero {{ item.slug }}" {% if item.backgroundImage %}
+  style='background-image: url({{ item.backgroundImage.getPath  }})'
+{% endif %}
+>
+	<div class="hero-content">
+		<h1>Projektowanie <br>stron www<span class="accent">.</span></h1>
+   		{{ item.content|raw }}
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<div class='{{ __SELF__.properties.containerClass }}'>
+	{% for service in __SELF__.services %}
+		{% partial 'ServicesList::single-service' service = service %}
+	{% endfor %}
+</div>
