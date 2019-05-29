@@ -73,6 +73,17 @@ class Service extends Model
         return $query->whereNotNull('published')->where ( 'published',true );
     }
 
+    /**
+     * Get sibling elements for selected service
+     *
+     * @return array
+     * @author Adam
+     **/
+    public function scopeSiblings($query)
+    {
+        return $query->published()->where('id', '<>', $this->id)->get(  );
+    }
+
     public static function getMenuTypeInfo($type)
     {
         $result = [];
@@ -82,7 +93,7 @@ class Service extends Model
 
             $items = self::published()->orderBy('name')->get();
             foreach ($items as $item) {
-                $references[$item->id] = $item->title;
+                $references[$item->id] = str_replace('|', '', $item->name);
             }
 
             $result = [

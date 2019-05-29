@@ -30,7 +30,7 @@ return [
         'content' => 'Content',
         'content_blocks' => 'Content blocks',
         'content_prompt' => 'Add new content block',
-
+        'label' => 'Service',
         'quote'=>[
         	'label' => 'Quote',
         	'description' => 'Create a blockquote with author',
@@ -47,7 +47,8 @@ return [
         	'description' => 'Add a section with ID and class',
         	'id' => 'ID',
         	'class' => 'class',
-        	'image_style' => 'Additional style',
+        	'style' => 'Additional style',
+            'image_style' => 'Additional style',
         	'background_image' => 'Background image',
         	'background_color' => 'Background color',
         	'content_sections' => 'Content sections',
@@ -60,6 +61,8 @@ return [
         	'image' => 'Image',
         	'image_code' => 'Image code',
         	'image_code_description' => 'For example svg code',
+            'container_class' => 'Container class name',
+            'sidebar_class' => 'Sidebar class name',
         ],
         'numbers'=>[
         	'label' => 'Numbers',
@@ -69,10 +72,25 @@ return [
     ],
     'services' => [
     	'menu_label' => 'Services',
+        'delete_selected_success' => 'Succesfully deleted the selected Service',
+        'delete_selected_empty' => 'Select services to delete',
     ],
 
     'components' => [
-    	'' => '',
+    	'serviceslist' => [
+            'name' => 'Services list',
+            'description' => 'Show a list of published services',
+            'url' => 'URL',
+            'url_description' => 'CMS page with the Service Content component',
+            'slug' => 'Slug',
+            'slug_description' => 'varibale name passed to the CMS page above',
+            'container_class' => 'Container class',
+            'container_class_description' => 'Class for the services wrapper DIV element',
+        ],
+        'servicecontent' => [
+            'name' => 'Service content',
+            'description' => 'Show content of the service',
+        ],
     ],
 
 

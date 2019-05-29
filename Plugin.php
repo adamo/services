@@ -113,4 +113,51 @@ class Plugin extends PluginBase
         ];
     }
 
+        public function registerMarkupTags()
+    {
+        return [
+            'filters' => [
+                'getClassIdAndStyle' => [$this, 'extractStyle'],
+                'url' => [$this, 'getBaseUrl'],
+            ],
+
+        ];
+    }
+
+    /**
+     * Return combined attributes for the section or content objects
+     *
+     * @return string
+     * @author Adam
+     * @todo Invoke media manager for background images
+     **/
+    public function extractStyle($div)
+    {
+        if (is_array($div)) {
+            $style = '';
+            if ( array_key_exists('class', $div) and $div['class'] != '') $style .= "class='{$div['class']}' ";
+            if ( array_key_exists('id', $div) and $div['id'] != '' ) $style .= "id='{$div['id']}' ";
+            if ( array_key_exists('backgroundImage', $div) and $div['backgroundImage'] != ''  ) {
+                $image = \Config::get('cms.storage.media.path').$div['backgroundImage'];
+                $div['style'] .= "background-image: url($image)";
+            }
+            if (array_key_exists('style', $div) and $div['style'] != '' ) $style .= "style='{$div['style']}'";
+            return $style;
+        }
+    }
+
+    /**
+     * Get the base url from a long one
+     *
+     * @return string
+     * @author Adam
+     **/
+    public function getbaseUrl($url)
+    {
+        $url = parse_url($url);
+        if (is_array($url) and array_key_exists('host', $url)) {
+            return $url['host'];
+        }
+    }
+
 }

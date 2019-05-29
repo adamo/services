@@ -1,0 +1,18 @@
+<aside class='{{ item.sidebarClass }}'>
+	<nav class='sidebar-nav'>
+		<h4>Zobacz także<span class="accent">.</span></h4>
+		{% for sibling in __SELF__.item.siblings %}
+			<div class='nav-element'>
+				<figure>
+					{% if sibling.icon %}
+						<a href="{{ sibling.slug }}">
+							<img src="{{ service.icon.getPath() }}" alt="{{service.icon.title}}">
+						</a>
+					{% endif %}
+
+				</figure>
+				<a href="{{ sibling.slug }}">{{ sibling.name }}<span class='accent'>.</span></a>
+			</div>
+		{% endfor %}
+	</nav>
+</aside>
