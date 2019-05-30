@@ -1,0 +1,13 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: depcore.services::lang.services.import
+    modelClass: Depcore\Services\Models\ServiceImport
+    list: $/depcore/services/models/service/columns_import_export.yaml
+
+export:
+    title: depcore.services::lang.services.export
+    modelClass: Depcore\Services\Models\ServiceExport
+    list: $/depcore/services/models/service/columns_import_export.yaml

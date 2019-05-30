@@ -4,7 +4,9 @@
         class="btn btn-primary oc-icon-plus">
         <?= e(trans('depcore.services::lang.service.new')) ?>
     </a>
-
+    <a href="<?= Backend::url('depcore/services/services/reorder') ?>" class="btn btn-default oc-icon-list"><?= e(trans('backend::lang.reorder.default_title')) ?></a>
+    <a href="<?= Backend::url('depcore/services/services/import') ?>" class="btn btn-default oc-icon-list"><?= e(trans('backend::lang.import.default_title')) ?></a>
+    <a href="<?= Backend::url('depcore/services/services/export') ?>" class="btn btn-default oc-icon-list"><?= e(trans('backend::lang.export.default_title')) ?></a>
     <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"

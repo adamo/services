@@ -6,3 +6,5 @@ columns:
     name:
         label: depcore.services::lang.service.name
         searchable: true
+    sort_order:
+        invisible: true

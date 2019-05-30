@@ -1,0 +1,20 @@
+columns:
+    name:
+        label: depcore.services::lang.service.name
+    content:
+        label: depcore.services::lang.service.content
+    # content_blocks:
+    #     label: depcore.services::lang.service.content_blocks
+    price_from:
+        label: depcore.services::lang.service.price_from
+    short_description:
+        label: depcore.services::lang.service.short_description
+    meta_title:
+        label: depcore.services::lang.service.meta_title
+    meta_description:
+        label: depcore.services::lang.service.meta_description
+    published:
+        label: depcore.services::lang.service.published?
+
+    sort_order:
+        label: depcore.services::lang.service.sort_order

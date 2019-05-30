@@ -67,6 +67,10 @@ return [
         'numbers'=>[
         	'label' => 'Numbers',
         	'description' => 'Add numbers section with source',
+            'propmp' => 'Add new number',
+            'content' => 'Content',
+            'title' => 'Title',
+            'accent' => 'Accent sign',
         ],
 
     ],

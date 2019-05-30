@@ -3,17 +3,17 @@
 {% for section in __SELF__.item.content_blocks %}
   <section {{ section|getClassIdAndStyle }}>
 	{% for contents in section.contentSection %}
-        <div {{ contents|getClassIdAndStyle }}>
-           {% if contents._group == 'contentWithMenu' %}
+            {% if contents._group == 'contentWithMenu' %}
               {% partial 'ServiceContent::content_with_menu' item=contents %}
-           {% elseif contents._group == 'quote' %}
+            {% elseif contents._group == 'quote' %}
               {% partial 'ServiceContent::quote' item=contents %}
-           {% elseif contents._group == 'numbers' %}
+            {% elseif contents._group == 'numbers' %}
               {% partial 'ServiceContent::numbers' item=contents %}
-           {% elseif contents._group == 'content' %}
-              {% partial 'ServiceContent::content' item=contents %}
+            {% elseif contents._group == 'content' %}
+              <div {{ contents|getClassIdAndStyle }}>
+                {% partial 'ServiceContent::content' item=contents %}
+              </div>
            {% endif %}
-        </div>
 	{% endfor %}
   </section>
 {% endfor %}

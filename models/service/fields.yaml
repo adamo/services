@@ -180,7 +180,7 @@ tabs:
                           s: s
                       numbers:
                         type: repeater
-                        label: depcore.services::lang.service.numbers.number
+                        label: depcore.services::lang.service.numbers.label
                         prompt: depcore.services::lang.service.numbers.prompt
                         form:
                           fields:
