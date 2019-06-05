@@ -50,4 +50,16 @@ class Services extends Controller
 
         return $this->listRefresh();
     }
+
+
+    /**
+     * Get services counter
+     *
+     * @return integer
+     * @author Adam
+     **/
+    public static function getServicesCount()
+    {
+        return Service::all(  )->count(  );
+    }
 }

@@ -51,7 +51,7 @@ class Service extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = ['name','content'];
+    protected $fillable = ['name','content','content_blocks','sort_order','meta_title','meta_description'];
 
     /**
      * @var array Relations
@@ -183,64 +183,64 @@ class Service extends Model
     }
 
 
-    public function beforeSave(  ) {
+    // public function beforeSave(  ) {
 
-        // Keep numbers together - this is independed of current language
-        $numbers = $this->is_on( 'numbers' );
-        if ( $numbers ) {
-            preg_match_all( '/(>[^<]+<)/', $content, $parts );
-            if ( $parts && is_array( $parts ) && ! empty( $parts ) ) {
-                $parts = array_shift( $parts );
-                foreach ( $parts as $part ) {
-                    $to_change = $part;
-                    while ( preg_match( '/(\d+) ([\da-z]+)/i', $to_change, $matches ) ) {
-                        $to_change = preg_replace( '/(\d+) ([\da-z]+)/i', '$1&nbsp;$2', $to_change );
-                    }
-                    if ( $part != $to_change ) {
-                        $content = str_replace( $part, $to_change, $content );
-                    }
-                }
-            }
-        }
+    //     // Keep numbers together - this is independed of current language
+    //     $numbers = $this->is_on( 'numbers' );
+    //     if ( $numbers ) {
+    //         preg_match_all( '/(>[^<]+<)/', $content, $parts );
+    //         if ( $parts && is_array( $parts ) && ! empty( $parts ) ) {
+    //             $parts = array_shift( $parts );
+    //             foreach ( $parts as $part ) {
+    //                 $to_change = $part;
+    //                 while ( preg_match( '/(\d+) ([\da-z]+)/i', $to_change, $matches ) ) {
+    //                     $to_change = preg_replace( '/(\d+) ([\da-z]+)/i', '$1&nbsp;$2', $to_change );
+    //                 }
+    //                 if ( $part != $to_change ) {
+    //                     $content = str_replace( $part, $to_change, $content );
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        $terms = $this->terms();
+    //     $terms = $this->terms();
 
-        // Avoid to replace inside script or styles tags
-        preg_match_all( '@(<(script|style)[^>]*>.*?(</(script|style)>))@is', $content, $matches );
-        $exceptions = array();
-        if ( ! empty( $matches ) && ! empty( $matches[0] ) ) {
-            $salt = 'kQc6T9fn5GhEzTM3Sxn7b9TWMV4PO0mOCV06Da7AQJzSJqxYR4z3qBlsW9rtFsWK';
-            foreach ( $matches[0] as $one ) {
-                $key = sprintf( '<!-- %s %s -->', $salt, md5( $one ) );
-                $exceptions[ $key ] = $one;
-                $re = sprintf( '@%s@', preg_replace( '/@/', '\@', preg_quote( $one, '/' ) ) );
-                $content = preg_replace( $re, $key, $content );
-            }
-        }
+    //     // Avoid to replace inside script or styles tags
+    //     preg_match_all( '@(<(script|style)[^>]*>.*?(</(script|style)>))@is', $content, $matches );
+    //     $exceptions = array();
+    //     if ( ! empty( $matches ) && ! empty( $matches[0] ) ) {
+    //         $salt = 'kQc6T9fn5GhEzTM3Sxn7b9TWMV4PO0mOCV06Da7AQJzSJqxYR4z3qBlsW9rtFsWK';
+    //         foreach ( $matches[0] as $one ) {
+    //             $key = sprintf( '<!-- %s %s -->', $salt, md5( $one ) );
+    //             $exceptions[ $key ] = $one;
+    //             $re = sprintf( '@%s@', preg_replace( '/@/', '\@', preg_quote( $one, '/' ) ) );
+    //             $content = preg_replace( $re, $key, $content );
+    //         }
+    //     }
 
-        // base therms replace
-        $re = '/^([aiouwz]|'.preg_replace( '/\./', '\.', implode( '|', $terms ) ).') +/i';
-        $content = preg_replace( $re, '$1$2&nbsp;', $content );
+    //     // base therms replace
+    //     $re = '/^([aiouwz]|'.preg_replace( '/\./', '\.', implode( '|', $terms ) ).') +/i';
+    //     $content = preg_replace( $re, '$1$2&nbsp;', $content );
 
-        // single letters
-        $re = '/([ >\(]+|&nbsp;)([aiouwz]|'.preg_replace( '/\./', '\.', implode( '|', $terms ) ).') +/i';
+    //     // single letters
+    //     $re = '/([ >\(]+|&nbsp;)([aiouwz]|'.preg_replace( '/\./', '\.', implode( '|', $terms ) ).') +/i';
 
-        // double call to handle orphan after orphan after orphan
-        $content = preg_replace( $re, '$1$2&nbsp;', $content );
-        $content = preg_replace( $re, '$1$2&nbsp;', $content );
+    //     // double call to handle orphan after orphan after orphan
+    //     $content = preg_replace( $re, '$1$2&nbsp;', $content );
+    //     $content = preg_replace( $re, '$1$2&nbsp;', $content );
 
-        // single letter after previous orphan
-        $re = '/(&nbsp;)([aiouwz]) +/i';
-        $content = preg_replace( $re, '$1$2&nbsp;', $content );
+    //     // single letter after previous orphan
+    //     $re = '/(&nbsp;)([aiouwz]) +/i';
+    //     $content = preg_replace( $re, '$1$2&nbsp;', $content );
 
-        if ( ! empty( $exceptions ) && is_array( $exceptions ) ) {
-            foreach ( $exceptions as $key => $one ) {
-                $re = sprintf( '/%s/', $key );
-                $content = preg_replace( $re, $one, $content );
-            }
-        }
+    //     if ( ! empty( $exceptions ) && is_array( $exceptions ) ) {
+    //         foreach ( $exceptions as $key => $one ) {
+    //             $re = sprintf( '/%s/', $key );
+    //             $content = preg_replace( $re, $one, $content );
+    //         }
+    //     }
 
-        return $content;
-    }
+    //     return $content;
+    // }
 
 }

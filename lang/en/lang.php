@@ -5,6 +5,10 @@ return [
         'name' => 'services',
         'description' => 'Create and manage services - for agancies',
     ],
+    'buttons' => [
+        'export' => 'Export',
+        'import' => 'Import',
+    ],
     'yes' => 'yes',
     'no' => 'no',
     'permissions' => [
@@ -31,6 +35,9 @@ return [
         'content_blocks' => 'Content blocks',
         'content_prompt' => 'Add new content block',
         'label' => 'Service',
+        'sort_order' => 'Sort order',
+        'export' => 'export',
+        'update_title' => 'Update service',
         'quote'=>[
         	'label' => 'Quote',
         	'description' => 'Create a blockquote with author',
@@ -67,14 +74,16 @@ return [
         'numbers'=>[
         	'label' => 'Numbers',
         	'description' => 'Add numbers section with source',
-            'propmp' => 'Add new number',
+            'prompt' => 'Add new number',
             'content' => 'Content',
             'title' => 'Title',
             'accent' => 'Accent sign',
+            'source' => 'Source URL',
         ],
 
     ],
     'services' => [
+        'all' => 'All services',
     	'menu_label' => 'Services',
         'delete_selected_success' => 'Succesfully deleted the selected Service',
         'delete_selected_empty' => 'Select services to delete',
@@ -90,6 +99,9 @@ return [
             'slug_description' => 'varibale name passed to the CMS page above',
             'container_class' => 'Container class',
             'container_class_description' => 'Class for the services wrapper DIV element',
+            'exclude' => 'Exclude',
+            'exclude_description' => 'Coma separated list of ids which to exclude from the query',
+            'exclude_validation' => 'The values in the exclude list can be only numbers separated by commas'
         ],
         'servicecontent' => [
             'name' => 'Service content',

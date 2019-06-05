@@ -109,6 +109,30 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cubes',
                 'permissions' => ['depcore.services.*'],
                 'order'       => 500,
+                'sideMenu' => [
+                    'services' => [
+                        'label'       => 'depcore.services::lang.services.all',
+                        'icon'        => 'icon-cube',
+                        'url'         => Backend::url('depcore/services/services'),
+                        'counter'     => ['\Depcore\Services\Controllers\Services', 'getServicesCount'],
+                        'counterLabel'=> 'depcore.services::lang.services.counter_label',
+
+                        // 'permissions' => ['depcore.services.access_resumes'],
+                    ],
+                    'add' => [
+                        'label'       => 'depcore.services::lang.service.create_title',
+                        'icon'        => 'icon-plus',
+                        'url'         => Backend::url('depcore/services/services/create'),
+                        // 'permissions' => ['depcore.services.access_resumes'],
+                    ],
+
+                    // 'settings' => [
+                    //     'label'       => 'depcore.services::lang.menu.secondary.settings',
+                    //     'icon'        => 'icon-cog',
+                    //     'url'         => Backend::url('system/settings/update/depcore/services/form'),
+                    //     // 'permissions' => ['depcore.services.access_settings']
+                    // ],
+                ], // side menu ends
             ],
         ];
     }

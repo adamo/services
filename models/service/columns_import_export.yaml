@@ -3,8 +3,8 @@ columns:
         label: depcore.services::lang.service.name
     content:
         label: depcore.services::lang.service.content
-    # content_blocks:
-    #     label: depcore.services::lang.service.content_blocks
+    content_blocks:
+        label: depcore.services::lang.service.content_blocks
     price_from:
         label: depcore.services::lang.service.price_from
     short_description:
@@ -15,6 +15,5 @@ columns:
         label: depcore.services::lang.service.meta_description
     published:
         label: depcore.services::lang.service.published?
-
     sort_order:
         label: depcore.services::lang.service.sort_order

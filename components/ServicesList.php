@@ -35,6 +35,14 @@ class ServicesList extends ComponentBase
                 'required'          => true,
                 'validationMessage' => 'depcore.services::lang.components.serviceslist.slug_required',
             ],
+            'exclude' => [
+                'title'             => 'depcore.services::lang.components.serviceslist.exclude',
+                'description'       => 'depcore.services::lang.components.serviceslist.exclude_description',
+                'type'              => 'string',
+                'required'          => false,
+                'validationPattern' => '^[0-9,]+$',
+                'validationMessage' => 'depcore.services::lang.components.serviceslist.exclude_validation',
+            ],
             'containerClass' => [
                 'title'             => 'depcore.services::lang.components.serviceslist.container_class',
                 'description'       => 'depcore.services::lang.components.serviceslist.container_class_description',
@@ -52,7 +60,11 @@ class ServicesList extends ComponentBase
      **/
     public function onRun()
     {
-        $this->services = Service::published(  )->get(  );
+        if ($this->property( 'exclude' ) ) {
+            $this->services = Service::published(  )->whereNotIn('id',explode(',', $this->property('exclude')) )->get(  );
+        }
+        else
+            $this->services = Service::published(  )->get(  );
     }
 
 
