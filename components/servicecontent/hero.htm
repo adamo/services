@@ -1,6 +1,14 @@
-<div class="hero {{ item.slug }}" {% if item.backgroundImage %}  style='background-image: url({{ item.backgroundImage.getPath  }})' {% endif %}>
-	<div class="hero-content">
-		<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
-   		{{ item.content|raw }}
+<div class="services-hero animate-slide {{ item.slug }}" style='padding-bottom: 2rem;'>
+	<figure><img src="{{ item.icon.getPath() }}" alt="{{item.icon.title}}"></figure>
+	<div>
+		{% if item.title %}
+				<h1 class=overtitle>{{ item.name|replace({'|':''})}}</h1>
+				<p class=gt_title>{{ item.title|replace({'|':'<br>'})|raw }}</p>
+		  	{% else %}
+				<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
+		{% endif %}
+		<div class="lead">
+			{{ item.short_description|raw }}
+		</div>
 	</div>
 </div>

@@ -23,7 +23,7 @@ class ServiceImport extends \Backend\Models\ImportModel
 				$this->logCreated(  );
 
 			} catch (\Exception $e) {
-				$this->logError( $row, $ex->getMessage(  ) );
+				$this->logError( $row, $e->getMessage(  ) );
 			}
 		}
 	}
