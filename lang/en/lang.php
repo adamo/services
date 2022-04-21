@@ -12,7 +12,7 @@ return [
     'yes' => 'yes',
     'no' => 'no',
     'permissions' => [
-        'some_permission' => 'Permission example',
+        'manage_services' => 'Manage services',
     ],
     'service' => [
         'new' => 'Create new service',
@@ -38,59 +38,58 @@ return [
         'sort_order' => 'Sort order',
         'export' => 'export',
         'update_title' => 'Update service',
-        'quote'=>[
-        	'label' => 'Quote',
-        	'description' => 'Create a blockquote with author',
-        	'content' => 'Content',
-        	'author' => 'Author',
+        'slug' => 'Slug',
+        'quote' => [
+            'label' => 'Quote',
+            'description' => 'Create a blockquote with author',
+            'content' => 'Content',
+            'author' => 'Author',
         ],
-        'content_with_menu'=>[
-        	'label' => 'Content with menu',
-        	'description' => 'Content with sidebar menu',
-        	'content' => 'Content',
+        'content_with_menu' => [
+            'label' => 'Content with menu',
+            'description' => 'Content with sidebar menu',
+            'content' => 'Content',
         ],
-        'section'=>[
-        	'label' => 'Section',
-        	'description' => 'Add a section with ID and class',
-        	'id' => 'ID',
-        	'class' => 'class',
-        	'style' => 'Additional style',
+        'section' => [
+            'label' => 'Section',
+            'description' => 'Add a section with ID and class',
+            'id' => 'ID',
+            'class' => 'class',
+            'style' => 'Additional style',
             'image_style' => 'Additional style',
-        	'background_image' => 'Background image',
-        	'background_color' => 'Background color',
-        	'content_sections' => 'Content sections',
-        	'add_new_content_section' => 'Add new content section',
-        	'content' => 'Content',
-        	'content_id' => 'Content ID',
-        	'content_class' => 'Content class',
-        	'content_style' => 'Content additional style',
-        	'content_text' => 'Content text',
-        	'image' => 'Image',
-        	'image_code' => 'Image code',
-        	'image_code_description' => 'For example svg code',
+            'background_image' => 'Background image',
+            'background_color' => 'Background color',
+            'content_sections' => 'Content sections',
+            'add_new_content_section' => 'Add new content section',
+            'content' => 'Content',
+            'content_id' => 'Content ID',
+            'content_class' => 'Content class',
+            'content_style' => 'Content additional style',
+            'content_text' => 'Content text',
+            'image' => 'Image',
+            'image_code' => 'Image code',
+            'image_code_description' => 'For example svg code',
             'container_class' => 'Container class name',
             'sidebar_class' => 'Sidebar class name',
         ],
-        'numbers'=>[
-        	'label' => 'Numbers',
-        	'description' => 'Add numbers section with source',
+        'numbers' => [
+            'label' => 'Numbers',
+            'description' => 'Add numbers section with source',
             'prompt' => 'Add new number',
             'content' => 'Content',
             'title' => 'Title',
             'accent' => 'Accent sign',
             'source' => 'Source URL',
         ],
-
     ],
     'services' => [
         'all' => 'All services',
-    	'menu_label' => 'Services',
+        'menu_label' => 'Services',
         'delete_selected_success' => 'Succesfully deleted the selected Service',
         'delete_selected_empty' => 'Select services to delete',
     ],
-
     'components' => [
-    	'serviceslist' => [
+        'serviceslist' => [
             'name' => 'Services list',
             'description' => 'Show a list of published services',
             'url' => 'URL',
@@ -101,15 +100,17 @@ return [
             'container_class_description' => 'Class for the services wrapper DIV element',
             'exclude' => 'Exclude',
             'exclude_description' => 'Coma separated list of ids which to exclude from the query',
-            'exclude_validation' => 'The values in the exclude list can be only numbers separated by commas'
+            'exclude_validation' => 'The values in the exclude list can be only numbers separated by commas',
+            'url_required' => 'depcore.services::lang.components.serviceslist.url_required',
+            'slug_required' => 'depcore.services::lang.components.serviceslist.slug_required',
         ],
         'servicecontent' => [
             'name' => 'Service content',
             'description' => 'Show content of the service',
         ],
+        'servicenavigation' => [
+            'name' => 'ServiceNavigation Component',
+            'description' => 'No description provided yet...',
+        ],
     ],
-
-
-
-
 ];

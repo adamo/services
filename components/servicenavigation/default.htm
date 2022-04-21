@@ -1,0 +1,12 @@
+{% set service = __SELF__.service %}
+<nav class='prev-next'>
+    <a href="" class=""><svg viewBox='0 0 40 40'><use xlink:href='#more'></use></svg> <span>{{'zobacz nasze'|_}} <strong>{{ item.nextService.name }}</strong></span></a>
+    <a href="" class=""><span>zobacz nasze <strong>Wsprawcie logistyczne</strong></span> <svg viewBox='0 0 40 40'><use xlink:href='#more'></use></svg></a>
+</nav>
+
+<section class="next__project" title="{{ item.nextPortfolioItem.title }}">
+   <a href="{{ url('/') }}/portfolio/{{ item.nextPortfolioItem.slug }}">
+      <p>następna realizacja</p>
+      <h2 class="super-title" >{{ item.nextPortfolioItem.title }}</h2>
+   </a>
+</section>

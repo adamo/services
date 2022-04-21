@@ -13,7 +13,10 @@ class Service extends Model
     use \October\Rain\Database\Traits\Sluggable;
     use \October\Rain\Database\Traits\Validation;
 
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        '@RainLab.Translate.Behaviors.TranslatableModel',
+        '@Renatio.SeoManager.Behaviors.SeoModel'
+    ];
 
     public $translatable = [
         'name',
@@ -22,7 +25,7 @@ class Service extends Model
         'meta_description',
         'content',
         'content_blocks',
-        'slug',
+        ['slug', 'index' => true],
     ];
 
 
@@ -60,6 +63,10 @@ class Service extends Model
     public $attachOne = [
         'backgroundImage' => '\System\Models\File',
         'icon' => '\System\Models\File',
+    ];
+
+    public $attachMany = [
+        'gallery' => '\System\Models\File',
     ];
 
     /**
@@ -132,12 +139,28 @@ class Service extends Model
 
     public static function resolveMenuItem($item, $url, $theme)
     {
-        $pageName = 'uslugi';
+
+        $service = self::find( $item->reference );
+
+        if ($item->type == 'single-service')
+        {
+
+            $result['url'] = \Request::getBaseUrl()."/{$item->cmsPage}/{$service->slug}";
+            $result['isActive'] = strpos($url, $service->slug);
+            $result['mtime'] = $service->updated_at;
+
+            return $result;
+        }
+
+
+        $pageName = '';
 
         $theme = Theme::getActiveTheme();
 
         $pages = CmsPage::listInTheme($theme, true);
+
         $cmsPages = [];
+        $cmsPage = \Cms\Classes\Page::loadCached($theme, $pageName);
 
         foreach ($pages as $page) {
             if (!$page->hasComponent('ServicesList')) continue;
@@ -148,7 +171,7 @@ class Service extends Model
             $pageName = strtolower($page->fileName);
         }
 
-        $cmsPage = \Cms\Classes\Page::loadCached($theme, $pageName);
+
 
         $items = self::orderBy('created_at', 'DESC')->get()->map(function (self $item) use ($cmsPage, $url, $pageName) {
                 $pageUrl = $cmsPage->url($pageName, ['slug' => $item->slug]);
@@ -157,15 +180,24 @@ class Service extends Model
                     'title'    => $item->name,
                     'url'      => $pageUrl.'/'.$item->slug,
                     'mtime'    => $item->updated_at,
-                    'isActive' => $item->is_published,
+                    'isActive' => $item->published,
                 ];
 
             })->toArray();
 
-
         return [
             'items' => $items,
         ];
+    }
+
+    protected function getCmsPageUrl(  )
+    {
+
+    }
+
+    protected function getSingleMenuItem(  )
+    {
+
     }
 
     /**

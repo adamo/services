@@ -1,6 +1,12 @@
 <div class="hero {{ item.slug }}" {% if item.backgroundImage %}  style='background-image: url({{ item.backgroundImage.getPath  }})' {% endif %}>
 	<div class="hero-content">
-		<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
+		{% if item.title %}
+				<h1 class=overtitle>{{ item.name|replace({'|':''})}}</h1>
+				<p class=gt_title>{{ item.title|replace({'|':'<br>'})|raw }}</p>
+		  	{% else %}
+				<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
+		{% endif %}
+
    		{{ item.content|raw }}
 	</div>
 </div>

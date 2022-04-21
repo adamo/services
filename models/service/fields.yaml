@@ -2,22 +2,37 @@ tabs:
   stretch: true
   defaultTab: depcore.services::lang.service.basic_info
   paneCssClass:
-      0: content-tab
-      1: seo-tab
-      1: conent-tab
+    0: basic-info
+    1: seo
+    2: content
+    3: references
   icons:
-      backend::lang.account.user: icon-user
-      backend::lang.account.groups: icon-group
+    backend::lang.account.user: icon-user
+    backend::lang.account.groups: icon-group
   fields:
     name:
       label: depcore.services::lang.service.name
       tab: depcore.services::lang.service.basic_info
       type: text
       comment: depcore.services::lang.service.name_comment
+      span: left
+    slug:
+      label: depcore.services::lang.service.slug
+      tab: depcore.services::lang.service.basic_info
+      type: text
+      span: right
+      preset:
+        field: name
+        type: slug
+    title:
+      label: depcore.services::lang.service.title
+      type: text
+      span: left
     price_from:
       label: depcore.services::lang.service.price_from
       tab: depcore.services::lang.service.basic_info
       type: number
+      span: right
     short_description:
       label: depcore.services::lang.service.short_description
       tab: depcore.services::lang.service.basic_info
@@ -37,177 +52,110 @@ tabs:
       size: giant
       titleFrom: id
       groups:
-        section:
-          name: depcore.services::lang.service.section.label
-          description: depcore.services::lang.service.section.description
-          icon: icon-square-o
+        numbers:
+          name: Liczby
           fields:
-              id:
-                type: text
-                label: depcore.services::lang.service.section.id
-                description: depcore.services::lang.service.section.id_description
-                span: left
-              class:
-                type: text
-                label: depcore.services::lang.service.section.class
-                span: right
-              style:
-                type: text
-                label: depcore.services::lang.service.section.style
-              backgroundImage:
-                label: depcore.services::lang.service.section.background_image
-                type: mediafinder
-                mode: image
-                span: left
-              backgroundGridColor:
-                label: depcore.services::lang.service.section.background_color
-                type: colorpicker
-                span: right
-              # aditionalImages:
-              #   label: depcore.services::lang.service.section.additional_images
-              #   type: repeater
-              #   prompt: depcore.services::lang.service.section.add_new_image
-              #   span: full
-              #   form:
-              #     fields:
-              #       id:
-              #         label: depcore.services::lang.service.section.image_id
-              #         type: text
-              #         span: left
-              #       class:
-              #         label: depcore.services::lang.service.section.image_class
-              #         type: text
-              #         span: right
-              #       style:
-              #         label: depcore.services::lang.service.section.image_style
-              #         type: text
-              #         span: left
-              #       image:
-              #         label: depcore.services::lang.service.section.image
-              #         type: mediafinder
-              #         mode: image
-              #         span: right
-              contentSection:
-                label: depcore.services::lang.service.section.content_sections
-                type: repeater
-                prompt: depcore.services::lang.service.section.add_new_content_section
-                span: full
-                titleFrom: id
-                groups:
-                  content:
-                    icon: icon-file-text
-                    name: depcore.services::lang.service.section.content
-                    fields:
-                      id:
-                        label: depcore.services::lang.service.section.content_id
-                        type: text
-                        span: left
-                      class:
-                        label: depcore.services::lang.service.section.content_class
-                        type: text
-                        span: right
-                      style:
-                        label: depcore.services::lang.service.section.image_style
-                        type: text
-                        span: left
-                      content:
-                        label: depcore.services::lang.service.section.content_text
-                        type: richeditor
-                        span: full
-                      image:
-                        label: depcore.services::lang.service.section.image
-                        type: mediafinder
-                        mode: image
-                        span: left
-                      imageCode:
-                        label: depcore.services::lang.service.section.image_code
-                        comment: depcore.services::lang.service.section.image_code_description
-                        type: textarea
-                        size: large
-                        span: right
-                  quote:
-                    name: depcore.services::lang.service.quote.label
-                    description: depcore.services::lang.service.quote.description
-                    icon: icon-quote-left
-                    type: nestedform
-                    titleFrom: quoteContent
-                    fields:
-                      quoteContent:
-                        label: depcore.services::lang.service.quote.content
-                        type: richeditor
-                        toolbarButtons: bold|italic
-                      author:
-                        label: depcore.services::lang.service.quote.author
-                        type: text
-                      # include:
-                      #   label: depcore.services::lang.service.quote.include
-                  contentWithMenu:
-                    name: depcore.services::lang.service.content_with_menu.label
-                    description: depcore.services::lang.service.content_with_menu.description
-                    icon: icon-file-text-o
-                    fields:
-                      containerClass:
-                        label: depcore.services::lang.service.container_class
-                        type: text
-                        default: grid__container
-                        span: left
-                      sidebarClass:
-                        label: depcore.services::lang.service.sidebar_class
-                        type: text
-                        default: grid__sidebar
-                        span: right
-                      content:
-                        label: depcore.services::lang.service.content_with_menu.content
-                        type: richeditor
-                  numbers:
-                    name: depcore.services::lang.service.numbers.label
-                    description: depcore.services::lang.service.numbers.description
-                    icon: icon-square-o
-                    fields:
-                      title:
-                        label: depcore.services::lang.service.numbers.title
-                        type: text
-                        span: left
-                      accent:
-                        label: depcore.services::lang.service.number.accent
-                        type: dropdown
-                        span: right
-                        size: tiny
-                        options:
-                          .: .
-                          ?: ?
-                          %: %
-                          s: s
-                      numbers:
-                        type: repeater
-                        label: depcore.services::lang.service.numbers.label
-                        prompt: depcore.services::lang.service.numbers.prompt
-                        form:
-                          fields:
-                            title:
-                              label: depcore.services::lang.service.numbers.title
-                              type: text
-                              span: left
-                            accent:
-                              label: depcore.services::lang.service.number.accent
-                              type: dropdown
-                              span: right
-                              options:
-                                %: %
-                                s: s
-                            content:
-                              label: depcore.services::lang.service.numbers.content
-                              type: richeditor
-                              toolbarButtons: bold
-                            source:
-                              label: depcore.services::lang.service.numbers.source
-                              type: text
+            number:
+              type: repeater
+              prompt: dodaj liczbę
+              form:
+                fields:
+                  single_number:
+                    type: number
+                    label: liczba
+                    span: storm
+                    cssClass: col-md-2
+                  first_title:
+                    type: text
+                    label: Zwykły tytuł
+                    span: storm
+                    cssClass: col-md-5
+                  second_title:
+                    type: text
+                    label: Pogrubiony tytuł
+                    span: storm
+                    cssClass: col-md-5
+        split_content:
+          name: Treść ze zdjeciem
+          fields:
+            content:
+              type: richeditor
+              label: Treść
+              span: left
+            image:
+              type: mediafinder
+              label: Zdjęcie
+              mode: image
+              span: right
+        portfolio_link:
+          name: Linki do portfolio
+          fields:
+            left:
+              label: treść z lewej
+              type: richeditor
+            title:
+              type: text
+              label: Treść nad linkiem
+              span: left
+            link_text:
+              type: text
+              label: Treść linka
+              span: right
+            portfolio_id:
+              type: text
+              label: link do portfolio
+              comment: link powinien być w formacie /case/nazwaportfolio, bez przedrostka https://buenavistamediagroup.pl
+        services_list:
+          name: punkty
+          fields:
+            bg:
+              label: Tło
+              type: mediafinder
+            punkt:
+              type: repeater
+              label: punkty
+              form:
+                fields:
+                  image:
+                    type: mediafinder
+                    label: ikonka
+                    mode: image
+                  first_title:
+                    type: text
+                    label: Tytuł zwykły
+                    span: left
+                  second_title:
+                    type: text
+                    span: right
+                    label: Tytuł pogrubiony
+        roadmap:
+          name: Kroki
+          icon: list
+          fields:
+            steps:
+              type: repeater
+              label: Kroki
+              form:
+                fields:
+                  title:
+                    type: text
+                    label: tytuł
+                  text:
+                    type: richeditor
+                    label: treść
+                    size: small
+                    toolbarButtons: bold
+
     backgroundImage:
       tab: depcore.services::lang.service.basic_info
       label: depcore.services::lang.service.background_image
       type: fileupload
       mode: image
-
+    gallery:
+      tab: depcore.services::lang.service.basic_info
+      label: depcore.services::lang.service.gallery
+      type: fileupload
+      mode: image
     icon:
       tab: depcore.services::lang.service.basic_info
       label: depcore.services::lang.service.icon
@@ -220,12 +168,7 @@ tabs:
       type: switch
       on: depcore.services::lang.yes
       off: depcore.services::lang.no
-    meta_title:
-      label: depcore.services::lang.service.meta_title
-      tab: depcore.services::lang.service.seo_tab
-      type: text
-    meta_description:
-      label: depcore.services::lang.service.meta_description
-      tab: depcore.services::lang.service.seo_tab
-      type: textarea
-      size: tiny
+    # portfolio_category_ids:
+    # label: depcore.services::lang.service.portfolio_categories_ids
+    # tab: depcore.services::lang.service.references
+    # type: text

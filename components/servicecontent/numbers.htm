@@ -1,5 +1,5 @@
 <div class="grid__numbers">
-	<h3 class='span'>{{ item.title }}<span class="accent">{{ item.accent }}</span></h3>
+	<div class='h3 span'>{{ item.title }}<span class="accent">{{ item.accent }}</span></div>
 	{% for number in item.numbers %}
 		{% partial 'ServiceContent::single_number' number=number %}
 	{% endfor %}

@@ -2,6 +2,6 @@
 	<div class='number-title'><span class="line"></span><strong>{{ number.title }}<span class="accent">{{ number.accent }}</span></strong></div>
 	{{ number.content|raw }}
 	{% if number.source %}
-		<a href="{{ number.source }}" class="source">{{ number.source|url }}</a>
+		<a href="{{ number.source }}" class="source" rel='nofollow' target="_blank">{{ number.source|url }}</a>
 	{% endif %}
 </div>

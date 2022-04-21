@@ -74,6 +74,7 @@ class Plugin extends PluginBase
         return [
             'Depcore\Services\Components\ServiceContent' => 'ServiceContent',
             'Depcore\Services\Components\ServicesList' => 'ServicesList',
+            'Depcore\Services\Components\ServiceNavigation' => 'serviceNavigation',
         ];
     }
 
@@ -84,12 +85,10 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
-
         return [
-            'depcore.services.create_services' => [
+            'depcore.services.manage_services' => [
                 'tab' => 'depcore.services::lang.plugin.name',
-                'label' => 'depcore.services::lang.permissions.create_services'
+                'label' => 'depcore.services::lang.permissions.manage_services'
             ],
         ];
     }
@@ -107,7 +106,7 @@ class Plugin extends PluginBase
                 'label'       => 'depcore.services::lang.plugin.name',
                 'url'         => Backend::url('depcore/services/services'),
                 'icon'        => 'icon-cubes',
-                'permissions' => ['depcore.services.*'],
+                'permissions' => ['depcore.services.manage_services'],
                 'order'       => 500,
                 'sideMenu' => [
                     'services' => [
@@ -116,21 +115,20 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('depcore/services/services'),
                         'counter'     => ['\Depcore\Services\Controllers\Services', 'getServicesCount'],
                         'counterLabel'=> 'depcore.services::lang.services.counter_label',
-
-                        // 'permissions' => ['depcore.services.access_resumes'],
+                        'permissions' => ['depcore.services.manage_services'],
                     ],
                     'add' => [
                         'label'       => 'depcore.services::lang.service.create_title',
                         'icon'        => 'icon-plus',
                         'url'         => Backend::url('depcore/services/services/create'),
-                        // 'permissions' => ['depcore.services.access_resumes'],
+                        'permissions' => ['depcore.services.manage_services'],
                     ],
 
                     // 'settings' => [
                     //     'label'       => 'depcore.services::lang.menu.secondary.settings',
                     //     'icon'        => 'icon-cog',
                     //     'url'         => Backend::url('system/settings/update/depcore/services/form'),
-                    //     // 'permissions' => ['depcore.services.access_settings']
+                    //     'permissions' => ['depcore.services.access_settings']
                     // ],
                 ], // side menu ends
             ],
@@ -182,6 +180,15 @@ class Plugin extends PluginBase
         if (is_array($url) and array_key_exists('host', $url)) {
             return $url['host'];
         }
+    }
+
+    public function registerStormedModels()
+    {
+        return [
+            '\Depcore\Services\Models\Service' => [
+                'placement' => 'tabs',
+            ],
+        ];
     }
 
 }

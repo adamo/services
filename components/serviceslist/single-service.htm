@@ -5,5 +5,5 @@
         {{ service.short_description|raw }}
         <span class="price">{{"od"|_}} <strong>{{ service.price_from }}</strong>{{'PLN'|_}}</span>
     </section>
-    <a href="{{ __SELF__.property('url') }}/{{ service.slug }}" class="button" style="visibility: visible;">{{'dowiedz się więcej'|_}}</a>
+    <a href="{{ url('/') }}/{{ __SELF__.property('url') }}/{{ service.slug }}" class="button" style="visibility: visible;">{{'dowiedz się więcej'|_}}</a>
 </div>

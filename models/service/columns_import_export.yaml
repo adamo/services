@@ -1,6 +1,8 @@
 columns:
     name:
         label: depcore.services::lang.service.name
+    title:
+      label: depcore.services::lang.service.title
     content:
         label: depcore.services::lang.service.content
     content_blocks:

@@ -25,12 +25,8 @@ class ServiceContent extends ComponentBase
     public function onRun()
     {
         $slug = $this->param('slug');
-        $this->item = Service::where ( 'slug',$slug )->first (  );
-
-        if ($this->item->meta_title != '') $this->page->title = $this->item->meta_title;
-        else $this->page->title = $this->item->name;
-
-        if ($this->item->meta != '') $this->page->meta_description = $this->item->meta;
+        $this->item = Service::transWhere ( 'slug',$slug )->first (  );
+        $this->page['service'] = $this->item;
     }
 
     public function defineProperties()
