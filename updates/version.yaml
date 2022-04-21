@@ -3,7 +3,11 @@
   - create_services_table.php
 1.0.2:
   - Add title to services table
+<<<<<<< HEAD
   - update_services_table-1.php
 1.0.3:
   - Add portfolio IDs to services table
   - update_services_table-2.php
+=======
+  - update_services_table-1.php
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6

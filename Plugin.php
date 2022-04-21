@@ -33,6 +33,13 @@ class Plugin extends PluginBase
      */
     public function register()
     {
+
+        Event::listen('translate.localePicker.translateParams', function($page, $params, $oldLocale, $newLocale) {
+            if ($page->baseFileName == 'usluga') {
+                return Service::translateParams($params, $oldLocale, $newLocale);
+            }
+        });
+
         Event::listen('pages.menuitem.listTypes', function () {
             return [
                 'single-service' => 'depcore.services::lang.service.label' ,

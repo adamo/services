@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aside class='{{ item.sidebarClass }}'>
 	<nav class='sidebar-nav'>
 		<div class='h4'>Zobacz także<span class="accent">.</span></div>
@@ -15,3 +16,20 @@
 		{% endfor %}
 	</nav>
 </aside>
+=======
+<nav class='sidebar-nav'>
+	<h4>{{ "Zobacz także"|_ }}<span class="accent"></span></h4>
+	{% for sibling in __SELF__.item.siblings %}
+		<div class='nav-element'>
+			<figure>
+				{% if sibling.icon %}
+					<a href="{{ sibling.slug }}">
+						<img src="{{ sibling.icon.getPath() }}" alt="{{sibling.icon.title}}">
+					</a>
+				{% endif %}
+			</figure>
+			<a href="{{ sibling.slug }}">{{ sibling.name|replace({'|':''})|raw }}</a>
+		</div>
+	{% endfor %}
+</nav>
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6

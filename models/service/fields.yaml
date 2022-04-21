@@ -22,8 +22,13 @@ tabs:
       type: text
       span: right
       preset:
+<<<<<<< HEAD
         field: name
         type: slug
+=======
+          field: name
+          type: slug
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
     title:
       label: depcore.services::lang.service.title
       type: text
@@ -42,13 +47,8 @@ tabs:
     content:
       label: depcore.services::lang.service.content
       tab: depcore.services::lang.service.content_tab
-      type: richeditor
-      size: giant
-    content_blocks:
-      label: depcore.services::lang.service.content_blocks
-      tab: depcore.services::lang.service.content_tab
-      prompt: depcore.services::lang.service.content_prompt
       type: repeater
+<<<<<<< HEAD
       size: giant
       titleFrom: id
       groups:
@@ -156,6 +156,10 @@ tabs:
       label: depcore.services::lang.service.gallery
       type: fileupload
       mode: image
+=======
+      groups: ~/plugins/depcore/services/models/service/content_fields.yaml
+      prompt: depcore.services::lang.service.add_content
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
     icon:
       tab: depcore.services::lang.service.basic_info
       label: depcore.services::lang.service.icon

@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 <div class="hero {{ item.slug }}" {% if item.backgroundImage %}  style='background-image: url({{ item.backgroundImage.getPath  }})' {% endif %}>
 	<div class="hero-content">
+=======
+<div class="services-hero animate-slide {{ item.slug }}" style='padding-bottom: 2rem;'>
+	<figure><img src="{{ item.icon.getPath() }}" alt="{{item.icon.title}}"></figure>
+	<div>
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 		{% if item.title %}
 				<h1 class=overtitle>{{ item.name|replace({'|':''})}}</h1>
 				<p class=gt_title>{{ item.title|replace({'|':'<br>'})|raw }}</p>
 		  	{% else %}
 				<h1>{{ item.name|replace({'|':'<br>'})|raw }}<span class="accent">.</span></h1>
 		{% endif %}
+<<<<<<< HEAD
 
    		{{ item.content|raw }}
+=======
+		<div class="lead">
+			{{ item.short_description|raw }}
+		</div>
+>>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 	</div>
 </div>
