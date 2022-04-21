@@ -25,11 +25,7 @@ class Service extends Model
         'meta_description',
         'content',
         'content_blocks',
-<<<<<<< HEAD
         ['slug', 'index' => true],
-=======
-        ['slug','index'=>true],
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
     ];
 
 
@@ -69,12 +65,9 @@ class Service extends Model
         'icon' => '\System\Models\File',
     ];
 
-<<<<<<< HEAD
     public $attachMany = [
         'gallery' => '\System\Models\File',
     ];
-=======
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 
     /**
      * get published services
@@ -165,7 +158,6 @@ class Service extends Model
         return $result;
     }
 
-<<<<<<< HEAD
     public static function resolveMenuItem($item, $url, $theme)
     {
 
@@ -183,22 +175,6 @@ class Service extends Model
 
 
         $pageName = '';
-=======
-    public static function translateParams($params, $oldLocale, $newLocale) {
-        $newParams = $params;
-        foreach ($params as $paramName => $paramValue) {
-            $records = self::transWhere($paramName, $paramValue, $oldLocale)->first();
-            if ($records) {
-                $records->translateContext($newLocale);
-                $newParams[$paramName] = $records->$paramName;
-            }
-        }
-        return $newParams;
-    }
-
-    public static function resolveMenuItem($item, $url, $theme) {
-        $service = self::find( $item->reference );
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 
         if ($item->type == 'single-service') {
 
@@ -232,11 +208,8 @@ class Service extends Model
             $pageName = strtolower($page->fileName);
         }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
         $items = self::orderBy('created_at', 'DESC')->get()->map(function (self $item) use ($cmsPage, $url, $pageName) {
                 $pageUrl = $cmsPage->url($pageName, ['slug' => $item->slug]);
 
@@ -254,7 +227,6 @@ class Service extends Model
         ];
     }
 
-<<<<<<< HEAD
     protected function getCmsPageUrl(  )
     {
 
@@ -262,13 +234,6 @@ class Service extends Model
 
     protected function getSingleMenuItem(  )
     {
-=======
-    protected function getCmsPageUrl(  ) {
-
-    }
-
-    protected function getSingleMenuItem(  ) {
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 
     }
 

@@ -81,19 +81,6 @@ return [
             'accent' => 'Accent sign',
             'source' => 'Source URL',
         ],
-<<<<<<< HEAD
-=======
-        'preview_title' => 'depcore.services::lang.service.preview_title',
-        'list_title' => 'depcore.services::lang.service.list_title',
-        'published' => 'depcore.services::lang.service.published',
-        'content_description' => 'depcore.services::lang.service.content_description',
-        'definition' => [
-            'term' => 'depcore.services::lang.service.definition.term',
-            'description' => 'depcore.services::lang.service.definition.description',
-        ],
-        'title' => 'depcore.services::lang.service.title',
-        'add_content' => 'depcore.services::lang.service.add_content',
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
     ],
     'services' => [
         'all' => 'All services',
@@ -132,12 +119,4 @@ return [
             'description' => 'No description provided yet...',
         ],
     ],
-<<<<<<< HEAD
-=======
-    'menu' => [
-        'secondary' => [
-            'settings' => 'depcore.services::lang.menu.secondary.settings',
-        ],
-    ],
->>>>>>> c6938656d703087661e968f4e59f3e0ebfea29f6
 ];
