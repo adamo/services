@@ -81,6 +81,7 @@ class Plugin extends PluginBase
         return [
             'Depcore\Services\Components\ServiceContent' => 'ServiceContent',
             'Depcore\Services\Components\ServicesList' => 'ServicesList',
+            'Depcore\Services\Components\ServiceNavigation' => 'serviceNavigation',
         ];
     }
 
@@ -194,6 +195,15 @@ class Plugin extends PluginBase
         if (is_array($url) and array_key_exists('host', $url)) {
             return $url['host'];
         }
+    }
+
+    public function registerStormedModels()
+    {
+        return [
+            '\Depcore\Services\Models\Service' => [
+                'placement' => 'tabs',
+            ],
+        ];
     }
 
 }
