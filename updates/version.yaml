@@ -1,1 +1,6 @@
-1.0.1: First version of services
+1.0.1:
+  - First version of services
+  - create_services_table.php
+1.0.2:
+  - Add title to services table
+  - update_services_table-1.php

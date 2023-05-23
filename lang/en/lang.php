@@ -12,7 +12,7 @@ return [
     'yes' => 'yes',
     'no' => 'no',
     'permissions' => [
-        'some_permission' => 'Permission example',
+        'manage_services' => 'Manage services',
     ],
     'service' => [
         'new' => 'Create new service',
@@ -38,6 +38,7 @@ return [
         'sort_order' => 'Sort order',
         'export' => 'export',
         'update_title' => 'Update service',
+        'slug' => 'Slug',
         'quote'=>[
         	'label' => 'Quote',
         	'description' => 'Create a blockquote with author',

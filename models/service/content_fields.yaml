@@ -1,0 +1,29 @@
+content:
+    name: depcore.services::lang.service.content
+    description: depcore.services::lang.service.content_description
+    icon: icon-file-text-o
+    fields:
+        content:
+            label: depcore.services::lang.service.content
+            span: full
+            type: richeditor
+definitionList:
+    name: Punktory
+    description: "Nagłówek i znak kończący"
+    icon: icon-th-list
+    fields:
+        definitionLists:
+            type: repeater
+            prompt: dodaj punktor
+            form:
+                fields:
+                    name:
+                        label: depcore.services::lang.service.definition.term
+                        type: text
+                        span: left
+                    description:
+                        label: depcore.services::lang.service.definition.description
+                        type: richeditor
+                        toolbarButtons: bold
+                        span: right
+                        size: small

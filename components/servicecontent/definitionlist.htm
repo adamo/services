@@ -1,0 +1,6 @@
+<dl>
+	{% for item in list %}
+		<dt>{{ item.name }}<span class="accent"></span></dt>
+		<dd>{{ item.description|raw }}</dd>
+	{% endfor %}
+</dl>
